@@ -1,0 +1,20 @@
+.top-banner{
+    background-image: url("https://i.ibb.co/zXB2yxJ/top-banner-min.png");
+    background-size: cover;
+    width: 100%;
+    height: 80vh;
+    background-position: right;
+    background-position: center center;
+}
+@media only screen and (max-width: 576px) {
+    .top-banner {
+      height: 50vh;
+    }
+  }
+
+  .nav-text{
+    color:#5feef3;
+  }
+  .nav-span{
+      color: #FFA7E4;
+  }
