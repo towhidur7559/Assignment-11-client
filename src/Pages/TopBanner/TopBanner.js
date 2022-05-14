@@ -6,7 +6,7 @@ const TopBanner = () => {
   return (
     <div className="top-banner mb-5 d-flex justify-content-center align-items-center">
       <div>
-        <h1 className="fw-bold display-4">
+        <h1 className="fw-bold display-4 text-color m-2">
         <Typed
         strings={[
           'Welcome To PC HOUSE ',
