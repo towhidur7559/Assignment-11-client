@@ -6,7 +6,7 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg navbar-light bg-white p-1 sticky-top">
       <div className="container">
         <Link className="navbar-brand" to="/">
-          <h2 className="nav-text fw-bold">PC <span className="nav-span">HOUSE</span></h2>
+          <h2 className="color-blue fw-bold">PC <span className="color-pink">HOUSE</span></h2>
         </Link>
         <button
           className="navbar-toggler"
@@ -49,16 +49,6 @@ const Navbar = () => {
                 to="/login"
               >
                 Login
-              </NavLink>
-            </li>
-            <li className="nave-item">
-              <NavLink
-                className={({ isActive }) =>
-                  isActive ? "nav-link text-info fs-5" : "nav-link fs-5"
-                }
-                to="/signup"
-              >
-                Signup
               </NavLink>
             </li>
           </ul>
