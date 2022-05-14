@@ -23,7 +23,7 @@ const ContactUs = () => {
                 </div>
                 <div className="col-12 text-center py-3">
                   <i className="fas fa-envelope fs-1 mb-3 text-info"></i>
-                  <h3 h3>Email</h3>
+                  <h3>Email</h3>
                   <p className="text-muted">safinxr@gmail.com<br/>safinkhan04@gmaol.com</p>
                 </div>
               </div>
