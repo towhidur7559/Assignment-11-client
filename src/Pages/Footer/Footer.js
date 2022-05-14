@@ -11,11 +11,11 @@ const Footer = () => {
         </small>
       </p>
       <h4>
-        <i class="mx-3 text-white fa-brands fa-facebook"></i>
-        <i class="mx-3 text-white fa-brands fa-google"></i>
-        <i class="mx-3 text-white fa-brands fa-instagram-square"></i>
-        <i class="mx-3 text-white fa-brands fa-twitter"></i>
-        <i class="mx-3 text-white fa-brands fa-linkedin"></i>
+        <i className="mx-3 text-white fa-brands fa-facebook"></i>
+        <i className="mx-3 text-white fa-brands fa-google"></i>
+        <i className="mx-3 text-white fa-brands fa-instagram-square"></i>
+        <i className="mx-3 text-white fa-brands fa-twitter"></i>
+        <i className="mx-3 text-white fa-brands fa-linkedin"></i>
 
       </h4>
     </footer>

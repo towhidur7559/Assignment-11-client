@@ -36,9 +36,9 @@ const Navbar = () => {
                 className={({ isActive }) =>
                   isActive ? "nav-link text-info fs-5" : "nav-link fs-5"
                 }
-                to="/about"
+                to="/blog"
               >
-                About
+                Blog
               </NavLink>
             </li>
             <li className="nave-item">
