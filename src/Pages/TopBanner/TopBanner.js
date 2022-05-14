@@ -6,10 +6,10 @@ const TopBanner = () => {
   return (
     <div className="top-banner mb-5 d-flex justify-content-center align-items-center">
       <div>
-        <h1 className="fw-bold">
+        <h1 className="fw-bold display-4">
         <Typed
         strings={[
-          'Welcome To <span className=>PC HOUSE</span> ',
+          'Welcome To PC HOUSE ',
           'Here You Can Find Your Dream PC']}
           typeSpeed={40}
           backSpeed={50}

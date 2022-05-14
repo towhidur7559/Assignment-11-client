@@ -4,3 +4,9 @@
 .color-pink{
     color: #FFA7E4;
 }
+.text-color {
+  background-image: linear-gradient(90deg, #5feef3,  #FFA7E4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+}
