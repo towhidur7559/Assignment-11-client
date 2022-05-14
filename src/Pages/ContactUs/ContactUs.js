@@ -69,7 +69,7 @@ const ContactUs = () => {
               />
               <textarea className="form-control mb-2 py-5" required />
 
-              <button type="submit" className="btn btn-info  px-lg-4">
+              <button type="submit" className="btn bg-pink mt-3  px-lg-4">
                 Submit
               </button>
               <ToastContainer
