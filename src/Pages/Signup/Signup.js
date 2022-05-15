@@ -1,35 +1,48 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Signup.css";
 import auth from "../../firebase.init";
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import Loading from "../Loading/Loading";
+import { toast, ToastContainer } from "react-toastify";
 
 const Signup = () => {
-    const [allError, setAllError] = useState('');
+  const [allError, setAllError] = useState("");
 
-    const [
-        createUserWithEmailAndPassword,
-        user,
-        loading,
-        error,
-      ] = useCreateUserWithEmailAndPassword(auth);
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
 
-// 🍔🍔🍔🍔🍔🍔🍔🍔🍔Signup area 🍔🍔🍔🍔🍔🍔🍔🍔🍔
+    const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+
+  const navigate = useNavigate();
+
+  // 🍔🍔🍔🍔🍔🍔🍔🍔🍔Signup area 🍔🍔🍔🍔🍔🍔🍔🍔🍔
+
   const submitted = (e) => {
-      e.preventDefault();
-      const email = e.target.email.value;
-      const password = e.target.password.value;
-      const confirmPassword = e.target.confirmPassword.value;
-      if(password === confirmPassword){
-        setAllError('')
-        createUserWithEmailAndPassword(email, password)
-      }
-      else{
-        setAllError("Password didn't match, check your password")
-      }
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    const confirmPassword = e.target.confirmPassword.value;
+    if (password === confirmPassword) {
+      setAllError("");
+      createUserWithEmailAndPassword(email, password);
+    } else {
+      setAllError("Password didn't match, check your password");
+    }
   };
 
+  const googleSignup = () => {
+    signInWithGoogle()
+  };
+  if (user) {
+    navigate("/login");
+  }
+  if (googleUser) {
+    navigate("/home");
+  }
+
+
+  // 🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟 HTML 🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟
 
   return (
     <div className="login-page d-flex justify-content-center align-items-center">
@@ -74,11 +87,9 @@ const Signup = () => {
                 required
               />
             </div>
-            <p className="text-danger">{allError || error?.message}</p>
+            <p className="text-danger">{allError || error?.message || googleError?.message}</p>
             <button type="submit" className="btn btn-info w-100">
-             {
-                 loading ? <Loading></Loading> : 'Signup'
-             }
+              {loading ? <Loading></Loading> : "Signup"}
             </button>
             <p className="my-2">
               Already have an account ?{" "}
@@ -92,8 +103,11 @@ const Signup = () => {
             </p>
           </form>
           <p className="text-center mt-4 mb-2">Or Signup using</p>
-          <button className="btn w-100 border border-primary text-primary">
-            <i className="fa-brands fa-google"></i> Continue With Google
+          <button
+            onClick={googleSignup}
+            className="btn w-100 border border-primary text-primary"
+          >
+             <i className="fa-brands fa-google"></i> Continue With Google
           </button>
         </div>
 
