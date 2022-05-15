@@ -1,8 +1,40 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { Link, useNavigate } from "react-router-dom";
+import auth from "../../firebase.init";
+import Loading from "../Loading/Loading";
 import "./Login.css";
 
 const Login = () => {
+  const navigate = useNavigate();
+
+  const [
+    signInWithEmailAndPassword,
+    user,
+    loading,
+    error,
+  ] = useSignInWithEmailAndPassword(auth);
+
+  const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+
+// 🍔🍔🍔🍔🍔🍔🍔🍔🍔Signup area 🍔🍔🍔🍔🍔🍔🍔🍔🍔
+
+const submitted = (e) => {
+  e.preventDefault();
+  const email = e.target.email.value;
+  const password = e.target.password.value;
+  signInWithEmailAndPassword(email, password);
+  
+};
+
+const googleSignup = () => {
+  signInWithGoogle()
+};
+
+if (user || googleUser) {
+  navigate("/home");
+}
+
   return (
     <div className="login-page d-flex justify-content-center align-items-center">
       <div className="container d-md-flex justify-content-around alin-items-center">
@@ -10,7 +42,7 @@ const Login = () => {
           className="p-4 p-md-4 shadow-lg mb-1 m-md-5 login-form bg-white rounded
       col-md-4"
         >
-          <form className="">
+          <form onSubmit={submitted}>
             <h1 className="text-center">Login</h1>
             <div className="mb-3">
               <label htmlFor="exampleInputEmail1" className="form-label">
@@ -20,7 +52,7 @@ const Login = () => {
                 type="email"
                 className="form-control"
                 aria-describedby="emailHelp"
-                name="name"
+                name="email"
                 required
               />
             </div>
@@ -35,8 +67,9 @@ const Login = () => {
                 required
               />
             </div>
-            <button type="submit" className="btn bg-pink w-100">
-              Login
+            <p className="text-danger">{error?.message}</p>
+            <button type="submit" className="btn btn-info w-100">
+            {loading ? <Loading></Loading> : "Login"}
             </button>
             <p className="my-2">
               Don't have an account ?{" "}
@@ -50,7 +83,8 @@ const Login = () => {
             </p>
           </form>
           <p className="text-center mt-4 mb-2">Or Login using</p>
-          <button className="btn w-100 border border-primary text-primary">
+          <p className="text-danger">{googleError?.message}</p>
+          <button onClick={googleSignup} className="btn w-100 border border-primary text-primary">
             <i class="fa-brands fa-google"></i> Continue With Google
           </button>
         </div>

@@ -7,7 +7,7 @@ import Loading from "../Loading/Loading";
 import { toast, ToastContainer } from "react-toastify";
 
 const Signup = () => {
-  const [allError, setAllError] = useState("");
+  const [allError, setAllError] = useState(""); 
 
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
@@ -87,7 +87,7 @@ const Signup = () => {
                 required
               />
             </div>
-            <p className="text-danger">{allError || error?.message || googleError?.message}</p>
+            <p className="text-danger">{allError || error?.message}</p>
             <button type="submit" className="btn btn-info w-100">
               {loading ? <Loading></Loading> : "Signup"}
             </button>
@@ -103,6 +103,7 @@ const Signup = () => {
             </p>
           </form>
           <p className="text-center mt-4 mb-2">Or Signup using</p>
+          <p className="text-danger">{googleError?.message}</p>
           <button
             onClick={googleSignup}
             className="btn w-100 border border-primary text-primary"
