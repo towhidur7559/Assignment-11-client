@@ -33,37 +33,46 @@ const Navbar = () => {
             <li className="nave-item">
               <NavLink
                 className={({ isActive }) =>
-                  isActive ? "nav-link text-info fs-5 ms-4" : "nav-link fs-5 ms-4"
+                  isActive
+                    ? "nav-link text-info fs-5 ms-4"
+                    : "nav-link fs-5 ms-4"
                 }
                 to="/"
               >
                 Home
               </NavLink>
             </li>
-            <li className={user?'nave-item':'d-none'}>
+            <li className={user ? "nave-item" : "d-none"}>
               <NavLink
                 className={({ isActive }) =>
-                  isActive ? "nav-link text-info fs-5 ms-4" : "nav-link fs-5 ms-4"
+                  isActive
+                    ? "nav-link text-info fs-5 ms-4"
+                    : "nav-link fs-5 ms-4"
                 }
                 to="/manageitems"
               >
                 Manage items
               </NavLink>
             </li>
-            <li className={user?'nave-item':'d-none'}>
+            <li className={user ? "nave-item" : "d-none"}>
               <NavLink
                 className={({ isActive }) =>
-                  isActive ? "nav-link text-info fs-5 ms-4" : "nav-link fs-5 ms-4"
+                  isActive
+                    ? "nav-link text-info fs-5 ms-4"
+                    : "nav-link fs-5 ms-4"
                 }
                 to="/additems"
               >
                 Add items
               </NavLink>
             </li>
-            <li className={user?'nave-item':'d-none'}>
+            <li className={user ? "nave-item" : "d-none"}
+            >
               <NavLink
                 className={({ isActive }) =>
-                  isActive ? "nav-link text-info fs-5 ms-4" : "nav-link fs-5 ms-4"
+                  isActive
+                    ? "nav-link text-info fs-5 ms-4"
+                    : "nav-link fs-5 ms-4"
                 }
                 to="/myitems"
               >
@@ -73,7 +82,9 @@ const Navbar = () => {
             <li className="nave-item">
               <NavLink
                 className={({ isActive }) =>
-                  isActive ? "nav-link text-info fs-5 ms-4" : "nav-link fs-5 ms-4"
+                  isActive
+                    ? "nav-link text-info fs-5 ms-4"
+                    : "nav-link fs-5 ms-4"
                 }
                 to="/blog"
               >
@@ -81,23 +92,30 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li className="nave-item">
-            {
-              user? <NavLink onClick={logout}
-              className={({ isActive }) =>
-                isActive ? "nav-link text-info fw-bold fs-5 ms-4" : "nav-link fs-5 ms-4"
-              }
-              to="/login"
-            >
-              Sign out
-            </NavLink>:<NavLink
-              className={({ isActive }) =>
-                isActive ? "nav-link text-info fs-5 ms-4" : "nav-link fs-5 ms-4"
-              }
-              to="/login"
-            >
-              Login
-            </NavLink>
-            }
+              {user ? (
+                <NavLink
+                  onClick={logout}
+                  className={({ isActive }) =>
+                    isActive
+                      ? "nav-link text-info fw-bold fs-5 ms-4"
+                      : "nav-link fs-5 ms-4"
+                  }
+                  to="/login"
+                >
+                  Sign out
+                </NavLink>
+              ) : (
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive
+                      ? "nav-link text-info fs-5 ms-4"
+                      : "nav-link fs-5 ms-4"
+                  }
+                  to="/login"
+                >
+                  Login
+                </NavLink>
+              )}
             </li>
           </ul>
         </div>

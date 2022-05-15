@@ -2,17 +2,21 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Signup.css";
 import auth from "../../firebase.init";
-import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
+import {
+  useCreateUserWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
 import Loading from "../Loading/Loading";
 import { toast, ToastContainer } from "react-toastify";
 
 const Signup = () => {
-  const [allError, setAllError] = useState(""); 
+  const [allError, setAllError] = useState("");
 
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
 
-    const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+  const [signInWithGoogle, googleUser, googleLoading, googleError] =
+    useSignInWithGoogle(auth);
 
   const navigate = useNavigate();
 
@@ -32,7 +36,7 @@ const Signup = () => {
   };
 
   const googleSignup = () => {
-    signInWithGoogle()
+    signInWithGoogle();
   };
   if (user) {
     navigate("/login");
@@ -40,7 +44,6 @@ const Signup = () => {
   if (googleUser) {
     navigate("/home");
   }
-
 
   // 🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟 HTML 🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟
 
@@ -108,7 +111,7 @@ const Signup = () => {
             onClick={googleSignup}
             className="btn w-100 border border-primary text-primary"
           >
-             <i className="fa-brands fa-google"></i> Continue With Google
+            <i className="fa-brands fa-google"></i> Continue With Google
           </button>
         </div>
 
