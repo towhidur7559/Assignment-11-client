@@ -9,7 +9,7 @@ const Reviews = () => {
           Find out how business owners around the world{" "}
         </h2>
         <h2 className="text-center fw-bold">
-          are growing with QuickBooks Commerce
+          are growing with PC HOUSE Commerce
         </h2>
       </div>
       <div className="my-5 d-md-flex justify-content-center align-items-center">
