@@ -14,7 +14,19 @@ const AddItems = () => {
     const quantity = e.target.quantity.value;
     const supplier = e.target.supplier.value;
     const img = e.target.img.value;
-    console.log(name, email, description, price, quantity, supplier, img);
+    const postData ={name, email, description, price, quantity, supplier, img}
+    fetch('http://localhost:5000/product', {
+        method:'POST',
+        headers:{
+            'content-type': 'application/json'
+        },
+        body:JSON.stringify(postData)    
+    })
+    .then(res => res.json())
+    .then(data =>{
+        alert('product added');
+        e.target.reset();
+    })
   };
 
   return (
