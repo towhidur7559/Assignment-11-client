@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import AllProduct from "./AllProduct";
 
+import Swal from "sweetalert2";
+
 const ManageItems = () => {
   const [reset, setReset] = useState(0);
 
@@ -13,17 +15,26 @@ const ManageItems = () => {
 
   //⭕❗⭕❗⭕❗⭕❗⭕❗⭕❗ Delete area⭕❗⭕❗⭕❗⭕❗⭕❗⭕❗
   const deleteBtn = (id) => {
-    const sure = window.confirm("are you sure");
-
-    if (sure) {
-      fetch(`http://localhost:5000/product/${id}`, {
-        method: "DELETE",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          setReset(reset + 1);
-        });
-    }
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        fetch(`http://localhost:5000/product/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            setReset(reset + 1);
+          });
+      }
+    });
   };
 
   //🍟🍟🍟🍟🍟🍟🍟🍟🍟 HTML 🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟
