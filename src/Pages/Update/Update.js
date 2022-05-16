@@ -50,7 +50,7 @@ const Update = () => {
       else{
         alert('Are you dumb 😑😑 Add a proper value')
       }
-      
+      e.target.reset();
   }
 
   // 🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟 HTML 🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟
