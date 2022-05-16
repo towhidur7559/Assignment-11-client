@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 
 const Update = () => {
   const [reset, setReset] = useState(0);
@@ -36,6 +37,15 @@ const Update = () => {
       .then((res) => res.json())
       .then((data) => {
         setReset(reset + 1);
+        toast.success("Successful", {
+          position: "top-center",
+          autoClose: 1000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       });
   };
 
@@ -86,6 +96,17 @@ const Update = () => {
                 >
                   Deliver <i className="fa-solid fa-truck"></i>
                 </button>
+                <ToastContainer
+                position="top-center"
+                autoClose={2000}
+                hideProgressBar
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+              /> 
                 <form onSubmit={addHandel} className="d-flex ">
                   <input type="number" className="form-control" name="number" required />
                   <button className="ms-2 px-3 btn btn-info" type="submit">

@@ -25,7 +25,7 @@ const ManageItems = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        Swal.fire("Deleted!", "Your product has been deleted.", "success");
         fetch(`http://localhost:5000/product/${id}`, {
           method: "DELETE",
         })
