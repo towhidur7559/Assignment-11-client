@@ -1,0 +1,11 @@
+.background-img{
+    background-image: url('https://i.ibb.co/NLB2tBQ/6308-min.jpg');
+    background-size: cover;
+    width: 100%;
+
+    background-position: center;
+}
+.ajriya-div{
+    width: 100px;
+    height: 50px;
+}

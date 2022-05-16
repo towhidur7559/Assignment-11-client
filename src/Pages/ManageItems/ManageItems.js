@@ -30,7 +30,7 @@ const ManageItems = () => {
   return (
     <div className="container">
       <div className="text-center">
-        <h2 className="rounded fw-bold p-2 shadow-lg text-info mt-4 d-inline-block">
+        <h2 className="rounded fw-bold py-2 px-4 shadow-lg text-info mt-4 d-inline-block">
           Manage Items
         </h2>
       </div>
