@@ -10,6 +10,7 @@ import Login from "./Pages/Login/Login";
 import Signup from "./Pages/Signup/Signup";
 import NotFound from "./Pages/NotFound/NotFound";
 import PrivateAuth from "./PrivateAuth/PrivateAuth";
+import Update from "./Pages/Update/Update";
 
 function App() {
   return (
@@ -40,6 +41,14 @@ function App() {
           element={
             <PrivateAuth>
               <ManageItems></ManageItems>
+            </PrivateAuth>
+          }
+        ></Route>
+        <Route
+          path="/update/:productId"
+          element={
+            <PrivateAuth>
+              <Update></Update>
             </PrivateAuth>
           }
         ></Route>
