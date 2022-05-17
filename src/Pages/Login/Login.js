@@ -87,7 +87,7 @@ if (user || googleUser) {
           <p className="text-center mt-4 mb-2">Or Login using</p>
           <p className="text-danger">{googleError?.message}</p>
           <button onClick={googleSignup} className="btn w-100 border border-primary text-primary">
-            <i class="fa-brands fa-google"></i> Continue With Google
+            <i className="fa-brands fa-google"></i> Continue With Google
           </button>
         </div>
 

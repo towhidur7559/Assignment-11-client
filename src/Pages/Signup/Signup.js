@@ -23,9 +23,8 @@ const Signup = () => {
     useSendEmailVerification(auth);
 
   const navigate = useNavigate();
-  const location = useLocation()
+  const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-
 
   // 🍔🍔🍔🍔🍔🍔🍔🍔🍔Signup area 🍔🍔🍔🍔🍔🍔🍔🍔🍔
 
@@ -46,19 +45,21 @@ const Signup = () => {
     signInWithGoogle();
   };
   if (user) {
-    sendEmailVerification()
-    navigate(from, { replace: true });
+    if (sending) {
+      navigate(from, { replace: true });
+      return;
+    } else {
+      sendEmailVerification();
+      Swal.fire({
+        icon: "success",
+        title: "A Verification email has been sent to your account  ",
+        showConfirmButton: false,
+        timer: 3000,
+      });
+    }
   }
   if (googleUser) {
     navigate(from, { replace: true });
-  }
-  if(sending){
-    Swal.fire({
-      icon: 'success',
-      title: 'A Verification email has been sent to your account  ',
-      showConfirmButton: false,
-      timer: 3000
-    })
   }
 
   // 🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟 HTML 🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟

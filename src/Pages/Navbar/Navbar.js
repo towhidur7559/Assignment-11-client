@@ -10,8 +10,7 @@ const Navbar = () => {
     signOut(auth);
   };
   return (
-    <div>
-      <nav className="navbar navbar-expand-lg navbar-light shadow-lg bg-white p-1 sticky-top">
+    <nav className="navbar navbar-expand-lg navbar-light shadow-lg bg-white p-1 sticky-top">
       <div className="container">
         <Link className="navbar-brand" to="/">
           <h2 className="color-blue fw-bold">
@@ -67,8 +66,7 @@ const Navbar = () => {
                 Add items
               </NavLink>
             </li>
-            <li className={user ? "nave-item" : "d-none"}
-            >
+            <li className={user ? "nave-item" : "d-none"}>
               <NavLink
                 className={({ isActive }) =>
                   isActive
@@ -122,7 +120,6 @@ const Navbar = () => {
         </div>
       </div>
     </nav>
-    </div>
   );
 };
 

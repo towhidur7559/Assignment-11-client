@@ -11,7 +11,6 @@ import Signup from "./Pages/Signup/Signup";
 import NotFound from "./Pages/NotFound/NotFound";
 import PrivateAuth from "./PrivateAuth/PrivateAuth";
 import Update from "./Pages/Update/Update";
-import Footer from "./Pages/Footer/Footer";
 import Verified from "./Pages/Verified/Verified";
 
 function App() {
