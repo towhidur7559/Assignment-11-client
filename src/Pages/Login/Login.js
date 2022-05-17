@@ -1,41 +1,59 @@
 import React from "react";
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
+import {
+  useSendPasswordResetEmail,
+  useSignInWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import Loading from "../Loading/Loading";
 import "./Login.css";
+import Swal from "sweetalert2";
+import { async } from "@firebase/util";
 
 const Login = () => {
   const navigate = useNavigate();
-  const location = useLocation()
+  const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
-  const [
-    signInWithEmailAndPassword,
-    user,
-    loading,
-    error,
-  ] = useSignInWithEmailAndPassword(auth);
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
 
-  const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+  const [signInWithGoogle, googleUser, googleLoading, googleError] =
+    useSignInWithGoogle(auth);
 
-// 🍔🍔🍔🍔🍔🍔🍔🍔🍔Signup area 🍔🍔🍔🍔🍔🍔🍔🍔🍔
+  const [sendPasswordResetEmail, sending] =
+    useSendPasswordResetEmail(auth);
 
-const submitted = (e) => {
-  e.preventDefault();
-  const email = e.target.email.value;
-  const password = e.target.password.value;
-  signInWithEmailAndPassword(email, password);
-  
-};
+  // 🍔🍔🍔🍔🍔🍔🍔🍔🍔Signup area 🍔🍔🍔🍔🍔🍔🍔🍔🍔
 
-const googleSignup = () => {
-  signInWithGoogle()
-};
+  const submitted = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    signInWithEmailAndPassword(email, password);
+  };
 
-if (user || googleUser) {
-  navigate(from, { replace: true });
-}
+  const googleSignup = () => {
+    signInWithGoogle();
+  };
+
+  if (user || googleUser) {
+    navigate(from, { replace: true });
+  }
+
+  const resetHandel = async () => {
+    const { value: email } = await Swal.fire({
+      title: "Enter email address",
+      input: "email",
+      inputPlaceholder: "Enter your email address",
+    });
+
+    if (email) {
+      Swal.fire("Reset password send successfully", "", "success");
+      await sendPasswordResetEmail(email)
+    }
+  };
 
   return (
     <div className="login-page d-flex justify-content-center align-items-center">
@@ -69,9 +87,15 @@ if (user || googleUser) {
                 required
               />
             </div>
+            <p>
+              Forgot Password ?{" "}
+              <span onClick={resetHandel} className="text-danger">
+                Reset password
+              </span>
+            </p>
             <p className="text-danger">{error?.message}</p>
             <button type="submit" className="btn btn-info w-100">
-            {loading ? <Loading></Loading> : "Login"}
+              {loading ? <Loading></Loading> : "Login"}
             </button>
             <p className="my-2">
               Don't have an account ?{" "}
@@ -86,7 +110,10 @@ if (user || googleUser) {
           </form>
           <p className="text-center mt-4 mb-2">Or Login using</p>
           <p className="text-danger">{googleError?.message}</p>
-          <button onClick={googleSignup} className="btn w-100 border border-primary text-primary">
+          <button
+            onClick={googleSignup}
+            className="btn w-100 border border-primary text-primary"
+          >
             <i className="fa-brands fa-google"></i> Continue With Google
           </button>
         </div>
