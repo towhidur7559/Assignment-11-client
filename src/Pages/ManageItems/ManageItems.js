@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import AllProduct from "./AllProduct";
-
 import Swal from "sweetalert2";
 
 const ManageItems = () => {
