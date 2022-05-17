@@ -44,7 +44,7 @@ const ManageItems = () => {
           Manage Items
         </h2>
       </div>
-      <div className="row g-4 mt-2">
+      <div className="row g-4 mt-2 pb-5">
         {products.map((product) => (
           <AllProduct
             key={product._id}

@@ -2,6 +2,7 @@ import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import "./AddItems.css";
+import { toast, ToastContainer } from "react-toastify";
 
 const AddItems = () => {
     const [user, loading, error] = useAuthState(auth);
@@ -24,7 +25,15 @@ const AddItems = () => {
     })
     .then(res => res.json())
     .then(data =>{
-        alert('product added');
+      toast.success("product added Successful", {
+        position: "top-center",
+        autoClose: 1000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
         e.target.reset();
     })
   };
@@ -96,6 +105,17 @@ const AddItems = () => {
             <button type="submit" className="btn btn-info w-100">
               Add to Stock
             </button>
+            <ToastContainer
+                position="top-center"
+                autoClose={2000}
+                hideProgressBar
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+              /> 
           </form>
         </div>
         <div className="ajriya-div"></div>

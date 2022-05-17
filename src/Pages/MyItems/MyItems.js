@@ -50,7 +50,7 @@ console.log(products);
             My Items
           </h2>
         </div>
-        <div className="row g-4 mt-2">
+        <div className="row g-4 mt-2 pb-4">
           {products.map((product) => (
             <AllProduct
               key={product._id}
