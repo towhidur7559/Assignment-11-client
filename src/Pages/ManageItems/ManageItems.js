@@ -7,7 +7,7 @@ const ManageItems = () => {
 
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/product")
+    fetch("https://fathomless-depths-99133.herokuapp.com/product")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, [reset]);
@@ -25,7 +25,7 @@ const ManageItems = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire("Deleted!", "Your product has been deleted.", "success");
-        fetch(`http://localhost:5000/product/${id}`, {
+        fetch(`https://fathomless-depths-99133.herokuapp.com/product/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

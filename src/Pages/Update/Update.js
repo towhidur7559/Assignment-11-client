@@ -10,7 +10,7 @@ const Update = () => {
 
 
   useEffect(() => {
-    fetch(`http://localhost:5000/product/${productId}`)
+    fetch(`https://fathomless-depths-99133.herokuapp.com/product/${productId}`)
       .then((res) => res.json())
       .then((data) => setProduct(data));
   }, [reset]);
@@ -27,7 +27,7 @@ const Update = () => {
     }
     const newData = { newquantity };
 
-    fetch(`http://localhost:5000/product/${productId}`, {
+    fetch(`https://fathomless-depths-99133.herokuapp.com/product/${productId}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

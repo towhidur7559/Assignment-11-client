@@ -16,7 +16,7 @@ const AddItems = () => {
     const supplier = e.target.supplier.value;
     const img = e.target.img.value;
     const postData ={name, email, description, price, quantity, supplier, img}
-    fetch('http://localhost:5000/product', {
+    fetch('https://fathomless-depths-99133.herokuapp.com/product', {
         method:'POST',
         headers:{
             'content-type': 'application/json'

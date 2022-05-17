@@ -12,7 +12,7 @@ const MyItems = () => {
   const email = user.email;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/product?email=${email}`)
+    fetch(`https://fathomless-depths-99133.herokuapp.com/product?email=${email}`)
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, [reset]);
@@ -30,7 +30,7 @@ const MyItems = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire("Deleted!", "Your product has been deleted.", "success");
-        fetch(`http://localhost:5000/product/${id}`, {
+        fetch(`https://fathomless-depths-99133.herokuapp.com/product/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
