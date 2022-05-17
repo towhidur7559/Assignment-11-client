@@ -12,6 +12,7 @@ import NotFound from "./Pages/NotFound/NotFound";
 import PrivateAuth from "./PrivateAuth/PrivateAuth";
 import Update from "./Pages/Update/Update";
 import Footer from "./Pages/Footer/Footer";
+import Verified from "./Pages/Verified/Verified";
 
 function App() {
   return (
@@ -55,6 +56,7 @@ function App() {
         ></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/signup" element={<Signup></Signup>}></Route>
+        <Route path="/verified" element={<Verified></Verified>}></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
     </div>

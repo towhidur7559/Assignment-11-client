@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Signup.css";
 import auth from "../../firebase.init";
 import {
@@ -7,7 +7,8 @@ import {
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import Loading from "../Loading/Loading";
-import { toast, ToastContainer } from "react-toastify";
+import { useSendEmailVerification } from "react-firebase-hooks/auth";
+import Swal from "sweetalert2";
 
 const Signup = () => {
   const [allError, setAllError] = useState("");
@@ -18,7 +19,13 @@ const Signup = () => {
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
 
+  const [sendEmailVerification, sending, Verror] =
+    useSendEmailVerification(auth);
+
   const navigate = useNavigate();
+  const location = useLocation()
+  const from = location.state?.from?.pathname || "/";
+
 
   // 🍔🍔🍔🍔🍔🍔🍔🍔🍔Signup area 🍔🍔🍔🍔🍔🍔🍔🍔🍔
 
@@ -39,10 +46,19 @@ const Signup = () => {
     signInWithGoogle();
   };
   if (user) {
-    navigate("/login");
+    sendEmailVerification()
+    navigate(from, { replace: true });
   }
   if (googleUser) {
-    navigate("/home");
+    navigate(from, { replace: true });
+  }
+  if(sending){
+    Swal.fire({
+      icon: 'success',
+      title: 'A Verification email has been sent to your account  ',
+      showConfirmButton: false,
+      timer: 3000
+    })
   }
 
   // 🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟 HTML 🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟

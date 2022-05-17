@@ -13,9 +13,13 @@ const PrivateAuth = ({children}) => {
             <Loading></Loading>
         )
     }
+    if(user?.emailVerified === false){
+        return <Navigate to="/verified" state={{ from: location }} replace />;
+    }
     if(!user){
         return <Navigate to="/login" state={{ from: location }} replace />;
     }
+    
     return children;
 };
 

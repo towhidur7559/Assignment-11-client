@@ -2,8 +2,15 @@ import React from 'react';
 
 const NotFound = () => {
     return (
-        <div>
-            <h1>Not found 4o4</h1>
+        <div style={{
+            backgroundImage :"url('https://i.ibb.co/6JgKBTq/6333070.jpg')",
+            backgroundSize: "cover",
+            height: "100vh",
+            width: "100%",
+            backgroundPosition: "center center"
+
+            }}>
+
         </div>
     );
 };

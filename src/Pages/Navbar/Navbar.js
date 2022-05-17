@@ -10,7 +10,8 @@ const Navbar = () => {
     signOut(auth);
   };
   return (
-    <nav className="navbar navbar-expand-lg navbar-light shadow-lg bg-white p-1 sticky-top">
+    <div>
+      <nav className="navbar navbar-expand-lg navbar-light shadow-lg bg-white p-1 sticky-top">
       <div className="container">
         <Link className="navbar-brand" to="/">
           <h2 className="color-blue fw-bold">
@@ -102,7 +103,7 @@ const Navbar = () => {
                   }
                   to="/login"
                 >
-                  Sign out
+                  Logout
                 </NavLink>
               ) : (
                 <NavLink
@@ -121,6 +122,7 @@ const Navbar = () => {
         </div>
       </div>
     </nav>
+    </div>
   );
 };
 
